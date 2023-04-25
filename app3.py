@@ -43,4 +43,5 @@ st.download_button(
     mime='application/json'
 )
 
-st.table(df.sample(1000))
+# display the DataFrame text and created_at
+st.table(df[["created_at", "text"]].iloc[0:1000])
