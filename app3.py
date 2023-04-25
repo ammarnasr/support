@@ -44,4 +44,4 @@ st.download_button(
 )
 
 # display the DataFrame text and created_at
-st.table(df[["created_at", "text"]].iloc[0:1000])
+st.table(df[["created_at", "text"]].iloc[0:5000])
