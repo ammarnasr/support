@@ -32,11 +32,15 @@ with open(selected_file, encoding='utf-8') as f:
     json_data = json.load(f)
 df = pd.DataFrame(json_data["data"])
 
-# st.title("Number of Tweets per Day")
 df['created_at'] = pd.to_datetime(df['created_at'])
 st.bar_chart(df['created_at'].dt.date.value_counts().sort_index())
-st.table(df.sample(10))
-# df["title"] = json_data["title"]
 
-# Plot the selected JSON file as a DataFrame
-# plot_dataframe(df)
+#Download the json file
+st.download_button(
+    label="Download JSON",
+    data=json.dumps(json_data, ensure_ascii = False),
+    file_name=selected_file,
+    mime='application/json'
+)
+
+st.table(df.sample(1000))
