@@ -186,49 +186,74 @@ with tab1:
 
 
 
+    st.info('The following charts shows the number of tweets per day for each need Click on the legend to hide/show a need')
+
     tweets_per_day = {}
     for title in json_files_short_names:
-        temp_df = pd.DataFrame(json_files_dict[title]['data'])
-        temp_df['created_at'] = pd.to_datetime(temp_df['created_at'])
-        temp_df['date'] = temp_df['created_at'].dt.date
-        tweets_per_day[title] = temp_df.groupby('date').size().reset_index(name='counts')
-
-    st.info('The following chart shows the number of tweets per day for each need Click on the legend to hide/show a need')
-
-    # Create a line chart showing the Above Information
+        if title in ['Khartoum', 'Omderman', 'Bahri', 'Shrq']:
+            temp_df = pd.DataFrame(json_files_dict[title]['data'])
+            temp_df['created_at'] = pd.to_datetime(temp_df['created_at'])
+            temp_df['date'] = temp_df['created_at'].dt.date
+            tweets_per_day[title] = temp_df.groupby('date').size().reset_index(name='counts')
     fig = px.line()
-    for title in json_files_short_names:
+    for title in tweets_per_day.keys():
         fig.add_scatter(x=tweets_per_day[title]['date'], y=tweets_per_day[title]['counts'], name=title)
-
     fig.update_xaxes(title_text='Date')
     fig.update_yaxes(title_text='Number of Tweets')
-    fig.update_layout(title_text='Number of Tweets per Day', title_x=0.5)
-
+    fig.update_layout(title_text='Number of Tweets per Day Cities', title_x=0.5)
     st.plotly_chart(fig, use_container_width=True)
+
+   
+    tweets_per_day = {}
+    for title in json_files_short_names:
+        if title in ['Gas', 'Med', 'Car', 'Water', 'Elec']:
+            temp_df = pd.DataFrame(json_files_dict[title]['data'])
+            temp_df['created_at'] = pd.to_datetime(temp_df['created_at'])
+            temp_df['date'] = temp_df['created_at'].dt.date
+            tweets_per_day[title] = temp_df.groupby('date').size().reset_index(name='counts')
+    fig = px.line()
+    for title in  tweets_per_day.keys():
+        fig.add_scatter(x=tweets_per_day[title]['date'], y=tweets_per_day[title]['counts'], name=title)
+    fig.update_xaxes(title_text='Date')
+    fig.update_yaxes(title_text='Number of Tweets')
+    fig.update_layout(title_text='Number of Tweets per Day Needs Type', title_x=0.5)
+    st.plotly_chart(fig, use_container_width=True)
+
+
 
 
     tweets_per_hour = {}
     for title in json_files_short_names:
-        temp_df = pd.DataFrame(json_files_dict[title]['data'])
-        temp_df['created_at'] = pd.to_datetime(temp_df['created_at'])
-        temp_df['hour'] = temp_df['created_at'].dt.hour
-        tweets_per_hour[title] = temp_df.groupby('hour').size().reset_index(name='counts')
-
-    st.info('The following chart shows the number of tweets per hour for each need Click on the legend to hide/show a need')
-
-    # Create a line chart showing the Above Information
+        if title in ['Khartoum', 'Omderman', 'Bahri', 'Shrq']:
+            temp_df = pd.DataFrame(json_files_dict[title]['data'])
+            temp_df['created_at'] = pd.to_datetime(temp_df['created_at'])
+            temp_df['hour'] = temp_df['created_at'].dt.hour
+            tweets_per_hour[title] = temp_df.groupby('hour').size().reset_index(name='counts')
     fig = px.line()
-    for title in json_files_short_names:
+    for title in tweets_per_hour.keys():
         fig.add_scatter(x=tweets_per_hour[title]['hour'], y=tweets_per_hour[title]['counts'], name=title)
-
     fig.update_xaxes(title_text='Hour')
     fig.update_yaxes(title_text='Number of Tweets')
-    fig.update_layout(title_text='Number of Tweets per Hour', title_x=0.5)
-
+    fig.update_layout(title_text='Number of Tweets per Hour Cities', title_x=0.5)
     st.plotly_chart(fig, use_container_width=True)
 
+   
+    tweets_per_hour = {}
+    for title in json_files_short_names:
+        if title in ['Gas', 'Med', 'Car', 'Water', 'Elec']:
+            temp_df = pd.DataFrame(json_files_dict[title]['data'])
+            temp_df['created_at'] = pd.to_datetime(temp_df['created_at'])
+            temp_df['hour'] = temp_df['created_at'].dt.hour
+            tweets_per_hour[title] = temp_df.groupby('hour').size().reset_index(name='counts')
+    fig = px.line()
+    for title in tweets_per_hour.keys():
+        fig.add_scatter(x=tweets_per_hour[title]['hour'], y=tweets_per_hour[title]['counts'], name=title)
+    fig.update_xaxes(title_text='Hour')
+    fig.update_yaxes(title_text='Number of Tweets')
+    fig.update_layout(title_text='Number of Tweets per Hour Needs Types', title_x=0.5)
+    st.plotly_chart(fig, use_container_width=True)
 
-
+   
 
 
     # Display a dropdown menu for the user to select a file
@@ -240,15 +265,34 @@ with tab1:
     # Add a new column for the hour of the day
     df['hour'] = df['created_at'].dt.hour
 
+    col1, col2 = st.columns([6, 1])
+
+    with col1:
+        # Display the dataframe when the user presses the button
+        if st.button("Show Dataframe"):
+            
+            st.table(df)
 
 
 
 
-    #Download the json file
-    st.download_button(
-        label="Download JSON",
-        data=json.dumps(json_data, ensure_ascii = False),
-        file_name=selected_file,
-        mime='application/json'
-    )
+    with col2:
+        file_name = json_files[json_files_short_names.index(selected_file)]
+        #Download the json file
+        st.download_button(
+            label="Download JSON",
+            data=json.dumps(json_data, ensure_ascii = False),
+            file_name=file_name,
+            mime='application/json'
+        )
+
+        #Download the csv file
+        #remove the .json from the file name
+        file_name = file_name[:-5]
+        st.download_button(
+            label="Download CSV",
+            data=df.to_csv(index=False, encoding='utf-8'),
+            file_name=file_name + '.csv',
+            mime='text/csv'
+        )
 
