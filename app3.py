@@ -23,7 +23,42 @@ def read_json_files(json_files):
 
 json_files = read_json_files_names()
 json_data = read_json_files(json_files)
-json_files_short_names= ['Khartoum', 'Omderman', 'Bahri', 'Gas', 'Med', 'Car', 'All', 'Water', 'Shrq']
+# json_files_short_names= ['Khartoum', 'Omderman', 'Bahri', 'Gas', 'Med', 'Car', 'All', 'Water', 'Shrq']
+json_files_short_names= []
+
+sorting_indices = []
+for i in range(len(json_files)):
+    if 'khartoum' in json_files[i].lower():
+        json_files_short_names.append('Khartoum')
+        continue
+    if 'omderman' in json_files[i].lower():
+        json_files_short_names.append('Omderman')
+        continue
+    if 'bahri' in json_files[i].lower():
+        json_files_short_names.append('Bahri')
+        continue
+    if 'gas' in json_files[i].lower():
+        json_files_short_names.append('Gas')
+        continue
+    if 'med' in json_files[i].lower():
+        json_files_short_names.append('Med')
+        continue
+    if 'car' in json_files[i].lower():
+        json_files_short_names.append('Car')
+        continue
+    if 'water' in json_files[i].lower():
+        json_files_short_names.append('Water')
+        continue
+    if 'shrq' in json_files[i].lower():
+        json_files_short_names.append('Shrq')
+        continue
+    if 'all' in json_files[i].lower():
+        json_files_short_names.append('All')
+        continue
+    if 'elec' in json_files[i].lower():
+        json_files_short_names.append('Elec')
+        continue
+
 json_files_dict = dict(zip(json_files_short_names, json_data))
 
 def get_number_of_tweets_in_city(target_city):
