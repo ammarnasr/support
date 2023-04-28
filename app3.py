@@ -147,7 +147,7 @@ with tab1:
 
 
 
-    col1, col2, col3, col4, col5 = st.columns(5)
+    col1, col2, col3, col4, col5, col6 = st.columns(6)
 
     with col1:
         title = 'Gas'
@@ -166,9 +166,14 @@ with tab1:
         counts_card(title, counts[title])
 
     with col5:
+        title = 'Elec'
+        counts_card(title, counts[title])
+    
+    with col6:
         title = 'Other'
-        other_count = counts['All'] - counts['Gas'] - counts['Med'] - counts['Car'] - counts['Water']
+        other_count = counts['All'] - counts['Gas'] - counts['Med'] - counts['Car'] - counts['Water'] - counts['Elec']
         counts_card(title, other_count)
+
 
     # Create a bar chart showing the Above Information
     counts_cities = [counts['Gas'], counts['Med'], counts['Car'], counts['Water'], other_count, counts['All']]
