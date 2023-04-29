@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import json
 import pandas as pd
-import matplotlib.pyplot as plt
+from saf_rsf import num_of_tweets, daily_count, hourly_count, word_cloud, hourly_count_bar
 import plotly.express as px
 
 def read_json_files_names():
@@ -86,6 +86,12 @@ tab1, tab2 = st.tabs(["Twitter", "Facebook"])
 with tab2:
     # Set up the Streamlit app page layout to have a centered 80% width
     st.title('Facebook Posts Analysis')
+    st.plotly_chart(num_of_tweets())
+    st.plotly_chart(daily_count())
+    st.plotly_chart(hourly_count())
+    st.plotly_chart(hourly_count_bar())
+    st.plotly_chart(word_cloud())
+
 
 with tab1:
     

@@ -3,3 +3,7 @@ numpy
 pandas
 streamlit
 plotly
+wordcloud
+arabic-reshaper
+python-bidi
+
