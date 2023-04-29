@@ -5,6 +5,25 @@ import pandas as pd
 from saf_rsf import num_of_tweets, daily_count, hourly_count, word_cloud, hourly_count_bar
 import plotly.express as px
 
+
+
+# Set up the Streamlit app page layout to have a centered 80% width 
+st.set_page_config(layout="centered", page_title='Sudan Tweets Analysis', page_icon='🇸🇩', initial_sidebar_state='collapsed')
+
+tab1, tab2 = st.tabs(["Twitter", "Facebook"])
+
+with tab2:
+    # Set up the Streamlit app page layout to have a centered 80% width
+    st.title('Facebook Posts Analysis')
+    st.plotly_chart(num_of_tweets())
+    st.plotly_chart(daily_count())
+    st.plotly_chart(hourly_count())
+    st.plotly_chart(hourly_count_bar())
+    st.plotly_chart(word_cloud())
+
+
+
+
 def read_json_files_names():
     json_files = [pos_json for pos_json in os.listdir() if pos_json.endswith('.json')]
     return json_files
@@ -76,22 +95,6 @@ def get_number_of_tweets_in_city(target_city):
     
     return target_city_df.shape[0]
         
-
-
-# Set up the Streamlit app page layout to have a centered 80% width 
-st.set_page_config(layout="centered", page_title='Sudan Tweets Analysis', page_icon='🇸🇩', initial_sidebar_state='collapsed')
-
-tab1, tab2 = st.tabs(["Twitter", "Facebook"])
-
-with tab2:
-    # Set up the Streamlit app page layout to have a centered 80% width
-    st.title('Facebook Posts Analysis')
-    st.plotly_chart(num_of_tweets())
-    st.plotly_chart(daily_count())
-    st.plotly_chart(hourly_count())
-    st.plotly_chart(hourly_count_bar())
-    st.plotly_chart(word_cloud())
-
 
 with tab1:
     
