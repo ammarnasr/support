@@ -88,7 +88,7 @@ posts = arabic_reshaper.reshape(posts)
 posts = get_display(posts)
 
 # Generate a word cloud image
-wordcloud = WordCloud(font_path='Adobe Arabic Regular.ttf', background_color='white', width=2000, height =1500).generate(posts)
+wordcloud = WordCloud(font_path='Adobe Arabic Regular.ttf', background_color='white', width=600, height =600).generate(posts)
 
 
 #Word Cloud for the Hashtags
@@ -98,7 +98,7 @@ hashtags = arabic_reshaper.reshape(hashtags)
 hashtags = get_display(hashtags)
 
 # Generate a word cloud image
-hashtag_wordcloud = WordCloud(font_path='Adobe Arabic Regular.ttf', background_color='white', width=1500, height =500).generate(hashtags)
+hashtag_wordcloud = WordCloud(font_path='Adobe Arabic Regular.ttf', background_color='white', width=600, height =600).generate(hashtags)
 
 def num_of_tweets():
     fig1 = px.pie(names=['RSF Posts', 'SAF Posts'], values=[len(df_rsf), len(df_saf)],

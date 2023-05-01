@@ -8,20 +8,20 @@ import plotly.express as px
 
 
 # Set up the Streamlit app page layout to have a centered 80% width 
-st.set_page_config(layout="centered", page_title='Sudan Tweets Analysis', page_icon='🇸🇩', initial_sidebar_state='collapsed')
+st.set_page_config(layout="wide", page_title='Sudan Tweets Analysis', page_icon='🇸🇩', initial_sidebar_state='collapsed')
 
 tab1, tab2 = st.tabs(["Twitter", "Facebook"])
 
 with tab2:
     # Set up the Streamlit app page layout to have a centered 80% width
     st.title('Facebook Posts Analysis')
-    st.plotly_chart(num_of_tweets())
-    st.plotly_chart(daily_count())
-    st.plotly_chart(daily_count_bar())
-    st.plotly_chart(hourly_count())
-    st.plotly_chart(hourly_count_bar())
-    st.plotly_chart(word_cloud())
-    st.plotly_chart(hashtag_word_cloud())
+    st.plotly_chart(num_of_tweets(),use_container_width=True)
+    st.plotly_chart(daily_count(),use_container_width=True)
+    st.plotly_chart(daily_count_bar(),use_container_width=True)
+    st.plotly_chart(hourly_count(),use_container_width=True)
+    st.plotly_chart(hourly_count_bar(),use_container_width=True)
+    st.plotly_chart(word_cloud(),use_container_width=True)
+    st.plotly_chart(hashtag_word_cloud(),use_container_width=True)
 
 
 
