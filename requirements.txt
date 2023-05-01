@@ -6,4 +6,4 @@ plotly
 wordcloud
 arabic-reshaper
 python-bidi
-
+nltk
