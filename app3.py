@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import json
 import pandas as pd
-from saf_rsf import num_of_tweets, daily_count, hourly_count, word_cloud, hourly_count_bar
+from saf_rsf import num_of_tweets, daily_count, hourly_count, word_cloud, hourly_count_bar , daily_count_bar,hashtag_word_cloud
 import plotly.express as px
 
 
@@ -17,9 +17,11 @@ with tab2:
     st.title('Facebook Posts Analysis')
     st.plotly_chart(num_of_tweets())
     st.plotly_chart(daily_count())
+    st.plotly_chart(daily_count_bar())
     st.plotly_chart(hourly_count())
     st.plotly_chart(hourly_count_bar())
     st.plotly_chart(word_cloud())
+    st.plotly_chart(hashtag_word_cloud())
 
 
 
