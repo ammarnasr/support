@@ -2,7 +2,41 @@
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
+from wordcloud import WordCloud
+import arabic_reshaper
+from bidi.algorithm import get_display
+import re
+import nltk
+from nltk.corpus import stopwords as sw
+from nltk.tokenize import word_tokenize  # import word_tokenize
+nltk.download('stopwords') # download 'stop words' resource
+nltk.download('punkt')  # download 'punkt' resource
 
+
+
+# Function to remove stop words
+def remove_stopwords (text:str):
+    tokens = word_tokenize(text)
+    filtered_text = [word for word in tokens if word.lower() not in stop_words]
+    return " ".join(filtered_text)
+
+# Function to clean the text
+def clean_text(text):
+    ''' This method takes in text to remove urls, website links, account tags and hashtags if any'''
+    # setting the url patterns to save all urls
+    url_pattern = r'(https?://[^\s]+)'
+    urls = set(re.findall(url_pattern, text))
+    # resetting the url pattern to remove all dummy charcters in the url
+    url_pattern = r'(www.|http[s]?://)(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
+    text = re.sub(url_pattern, '', text)
+    # setting the tag patter to remove the dummy charcters from tags
+    tag_pattern = r'(RT @([A-Za-z0-9_]+):)|(@([A-Za-z0-9_]+))' # Removes the 'RT @account tag:' pattern as well
+    text = re.sub(tag_pattern, '', text)
+    # setting hashtag pattern to remove hashtags from the text
+    hashtag_pattern = r'#(\w+)'
+    hashtags = set(re.findall(hashtag_pattern, text))
+    text = re.sub(hashtag_pattern, '', text)
+    return text, hashtags, urls
 
 # Function to count the number of posts per day
 def f(x):
@@ -37,68 +71,14 @@ hourly_count_merged.index = hourly_count_merged.index + 1
 hourly_count_saf.index = hourly_count_saf.index + 1
 hourly_count_rsf.index = hourly_count_rsf.index + 1
 
-import re
-def clean_text(text):
-    ''' This method takes in text to remove urls, website links, account tags and hashtags if any'''
-    # setting the url patterns to save all urls
-    url_pattern = r'(https?://[^\s]+)'
-    urls = set(re.findall(url_pattern, text))
-    # resetting the url pattern to remove all dummy charcters in the url
-    url_pattern = r'(www.|http[s]?://)(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
-    text = re.sub(url_pattern, '', text)
-    # setting the tag patter to remove the dummy charcters from tags
-    tag_pattern = r'(RT @([A-Za-z0-9_]+):)|(@([A-Za-z0-9_]+))' # Removes the 'RT @account tag:' pattern as well
-    text = re.sub(tag_pattern, '', text)
-    # setting hashtag pattern to remove hashtags from the text
-    hashtag_pattern = r'#(\w+)'
-    hashtags = set(re.findall(hashtag_pattern, text))
-    text = re.sub(hashtag_pattern, '', text)
-    return text, hashtags, urls
-
 df_merged['text_cleaned'], df_merged['hashtags'], df_merged['urls'] = zip(*df_merged.text.apply(clean_text))
 
 # removing the stop words 
-import nltk
-from nltk.corpus import stopwords as sw
-from nltk.tokenize import word_tokenize  # import word_tokenize
-
-nltk.download('stopwords') # download 'stop words' resource
-nltk.download('punkt')  # download 'punkt' resource
-
 en_stop_words = set(sw.words('english'))  # 'english'
 ar_stop_words = set(sw.words('arabic'))  # 'arabic'
 stop_words = en_stop_words.union(ar_stop_words) # merging all the stop words together
 
-def remove_stopwords (text:str):
-    tokens = word_tokenize(text)
-    filtered_text = [word for word in tokens if word.lower() not in stop_words]
-    return " ".join(filtered_text)
 
-
-# Word Cloud For the posts
-from wordcloud import WordCloud
-import arabic_reshaper
-from bidi.algorithm import get_display
-
-# posts = " ".join([post for post in df_merged['text_cleaned']])
-# posts = remove_stopwords(posts)
-
-# # Make text readable for a non-Arabic library like wordcloud
-# posts = arabic_reshaper.reshape(posts)
-# posts = get_display(posts)
-
-# # Generate a word cloud image
-# wordcloud = WordCloud(font_path='Adobe Arabic Regular.ttf', background_color='white', width=600, height =600).generate(posts)
-
-
-# #Word Cloud for the Hashtags
-# hashtags = " ".join([hashtag for hashtag_list in df_merged['hashtags'] for hashtag in hashtag_list])
-# # Make text readable for a non-Arabic library like wordcloud
-# hashtags = arabic_reshaper.reshape(hashtags)
-# hashtags = get_display(hashtags)
-
-# # Generate a word cloud image
-# hashtag_wordcloud = WordCloud(font_path='Adobe Arabic Regular.ttf', background_color='white', width=600, height =600).generate(hashtags)
 
 def num_of_tweets():
     fig1 = px.pie(names=['RSF Posts', 'SAF Posts'], values=[len(df_rsf), len(df_saf)],
@@ -141,6 +121,17 @@ def hourly_count_bar():
     return fig5
 
 def word_cloud():
+    
+    posts = " ".join([post for post in df_merged['text_cleaned']])
+    posts = remove_stopwords(posts)
+
+    # Make text readable for a non-Arabic library like wordcloud
+    posts = arabic_reshaper.reshape(posts)
+    posts = get_display(posts)
+
+    # Generate a word cloud image
+    wordcloud = WordCloud(font_path='Adobe Arabic Regular.ttf', background_color='white', width=600, height =600).generate(posts)
+
     fig6 = px.imshow(wordcloud)
     fig6.update_layout(title='Posts Word Cloud')
 
@@ -159,6 +150,15 @@ def word_cloud():
     return fig6
 
 def hashtag_word_cloud():
+    hashtags = " ".join([hashtag for hashtag_list in df_merged['hashtags'] for hashtag in hashtag_list])
+    # Make text readable for a non-Arabic library like wordcloud
+    hashtags = arabic_reshaper.reshape(hashtags)
+    hashtags = get_display(hashtags)
+
+    # Generate a word cloud image
+    hashtag_wordcloud = WordCloud(font_path='Adobe Arabic Regular.ttf', background_color='white', width=600, height =600).generate(hashtags)
+
+
     fig7 = px.imshow(hashtag_wordcloud)
     fig7.update_layout(title='Hashtag Word Cloud')
 
