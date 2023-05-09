@@ -120,7 +120,7 @@ def hourly_count_bar():
     fig5.update_layout(title='Posts over the day', xaxis_title='Hours of the day', yaxis_title='# FB Posts')
     return fig5
 
-def word_cloud():
+def word_cloud_posts():
     
     posts = " ".join([post for post in df_merged['text_cleaned']])
     posts = remove_stopwords(posts)
@@ -130,9 +130,9 @@ def word_cloud():
     posts = get_display(posts)
 
     # Generate a word cloud image
-    wordcloud = WordCloud(font_path='Adobe Arabic Regular.ttf', background_color='white', width=600, height =600).generate(posts)
+    wc = WordCloud(font_path='Adobe Arabic Regular.ttf', background_color='white', width=600, height =600).generate(posts)
 
-    fig6 = px.imshow(wordcloud)
+    fig6 = px.imshow(wc)
     fig6.update_layout(title='Posts Word Cloud')
 
     fig6.update_xaxes(
