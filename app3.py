@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import json
 import pandas as pd
-from saf_rsf import num_of_tweets, daily_count, hourly_count, hourly_count_bar , daily_count_bar,#hashtag_word_cloud, word_cloud
+from saf_rsf import num_of_tweets, daily_count, hourly_count, hourly_count_bar , daily_count_bar#,hashtag_word_cloud, word_cloud
 import plotly.express as px
 
 
