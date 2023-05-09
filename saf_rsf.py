@@ -80,25 +80,25 @@ from wordcloud import WordCloud
 import arabic_reshaper
 from bidi.algorithm import get_display
 
-posts = " ".join([post for post in df_merged['text_cleaned']])
-posts = remove_stopwords(posts)
+# posts = " ".join([post for post in df_merged['text_cleaned']])
+# posts = remove_stopwords(posts)
 
-# Make text readable for a non-Arabic library like wordcloud
-posts = arabic_reshaper.reshape(posts)
-posts = get_display(posts)
+# # Make text readable for a non-Arabic library like wordcloud
+# posts = arabic_reshaper.reshape(posts)
+# posts = get_display(posts)
 
-# Generate a word cloud image
-wordcloud = WordCloud(font_path='Adobe Arabic Regular.ttf', background_color='white', width=600, height =600).generate(posts)
+# # Generate a word cloud image
+# wordcloud = WordCloud(font_path='Adobe Arabic Regular.ttf', background_color='white', width=600, height =600).generate(posts)
 
 
-#Word Cloud for the Hashtags
-hashtags = " ".join([hashtag for hashtag_list in df_merged['hashtags'] for hashtag in hashtag_list])
-# Make text readable for a non-Arabic library like wordcloud
-hashtags = arabic_reshaper.reshape(hashtags)
-hashtags = get_display(hashtags)
+# #Word Cloud for the Hashtags
+# hashtags = " ".join([hashtag for hashtag_list in df_merged['hashtags'] for hashtag in hashtag_list])
+# # Make text readable for a non-Arabic library like wordcloud
+# hashtags = arabic_reshaper.reshape(hashtags)
+# hashtags = get_display(hashtags)
 
-# Generate a word cloud image
-hashtag_wordcloud = WordCloud(font_path='Adobe Arabic Regular.ttf', background_color='white', width=600, height =600).generate(hashtags)
+# # Generate a word cloud image
+# hashtag_wordcloud = WordCloud(font_path='Adobe Arabic Regular.ttf', background_color='white', width=600, height =600).generate(hashtags)
 
 def num_of_tweets():
     fig1 = px.pie(names=['RSF Posts', 'SAF Posts'], values=[len(df_rsf), len(df_saf)],
