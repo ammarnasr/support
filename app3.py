@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import json
 import pandas as pd
-from saf_rsf import num_of_tweets, daily_count, hourly_count, hourly_count_bar , daily_count_bar,hashtag_word_cloud, word_cloud_posts
+from saf_rsf import num_of_tweets, daily_count, hourly_count, hourly_count_bar , daily_count_bar#,hashtag_word_cloud, word_cloud_posts
 import plotly.express as px
 
 
@@ -20,8 +20,8 @@ with tab2:
     st.plotly_chart(daily_count_bar(),use_container_width=True)
     st.plotly_chart(hourly_count(),use_container_width=True)
     st.plotly_chart(hourly_count_bar(),use_container_width=True)
-    st.plotly_chart(word_cloud_posts(),use_container_width=True)
-    st.plotly_chart(hashtag_word_cloud(),use_container_width=True)
+    # st.plotly_chart(word_cloud_posts(),use_container_width=True)
+    # st.plotly_chart(hashtag_word_cloud(),use_container_width=True)
     from wordcloud import WordCloud
 
     wc = WordCloud().fit_words({"A": 2, "B": 2, "C": 3})
