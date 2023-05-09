@@ -22,6 +22,11 @@ with tab2:
     st.plotly_chart(hourly_count_bar(),use_container_width=True)
     # st.plotly_chart(word_cloud(),use_container_width=True)
     # st.plotly_chart(hashtag_word_cloud(),use_container_width=True)
+    from wordcloud import WordCloud
+
+    wc = WordCloud().fit_words({"A": 2, "B": 2, "C": 3})
+
+    st.image(wc.to_array())
 
 
 
