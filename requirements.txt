@@ -7,3 +7,4 @@ wordcloud
 arabic-reshaper
 python-bidi
 nltk
+importlib-resources
