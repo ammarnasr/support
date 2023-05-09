@@ -3,7 +3,7 @@ numpy
 pandas
 streamlit
 plotly
-wordcloud == 1.8.1
+wordcloud
 arabic-reshaper
 python-bidi
 nltk
