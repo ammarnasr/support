@@ -20,8 +20,8 @@ with tab2:
     st.plotly_chart(daily_count_bar(),use_container_width=True)
     st.plotly_chart(hourly_count(),use_container_width=True)
     st.plotly_chart(hourly_count_bar(),use_container_width=True)
-    # st.plotly_chart(word_cloud_posts(),use_container_width=True)
-    # st.plotly_chart(hashtag_word_cloud(),use_container_width=True)
+    st.plotly_chart(word_cloud_posts(),use_container_width=True)
+    st.plotly_chart(hashtag_word_cloud(),use_container_width=True)
 
 
 
