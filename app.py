@@ -152,6 +152,8 @@ def main():
 
     #Add a button to start scraping
     if st.button("Start scraping"):
+        st.warning("This is a demo, Scraping can not be done on streamlit sharing. Stopping here...")
+        return -1
 
         results_dir = "results"
         if not os.path.exists(results_dir):
