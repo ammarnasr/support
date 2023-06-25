@@ -4,13 +4,17 @@ import json
 import pandas as pd
 from saf_rsf import num_of_tweets, daily_count, hourly_count, hourly_count_bar , daily_count_bar,hashtag_word_cloud, word_cloud_posts
 import plotly.express as px
+from app import main
 
 
 
 # Set up the Streamlit app page layout to have a centered 80% width 
 st.set_page_config(layout="wide", page_title='Sudan Tweets Analysis', page_icon='🇸🇩', initial_sidebar_state='collapsed')
 
-tab1, tab2 = st.tabs(["Twitter", "Facebook"])
+tab1, tab2, tab3 = st.tabs(["Twitter", "Facebook", "Facebook New Posts"])
+
+with tab3:
+    main()
 
 with tab2:
     # Set up the Streamlit app page layout to have a centered 80% width
