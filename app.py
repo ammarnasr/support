@@ -152,8 +152,6 @@ def main():
 
     #Add a button to start scraping
     if st.button("Start scraping"):
-        st.warning("This is a demo, Scraping can not be done on streamlit sharing. Stopping here...")
-        return -1
 
         results_dir = "results"
         if not os.path.exists(results_dir):
@@ -199,6 +197,8 @@ def main():
             #try looping over all posts, if catch an error, sleep for 1000 seconds and try again and warn the user about the error caused by facebook ban for scraping
             try:
                 st.info("Scraping started")
+                st.warning("This is a demo, Scraping can not be done on streamlit sharing. Stopping here...")
+                return -1
                 for i, post in enumerate(all_posts):
                     st.write(i)
                     #update progress bar
