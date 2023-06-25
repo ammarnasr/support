@@ -71,6 +71,21 @@ def get_posts_df(results_dir="results", fbpage_name="SAF"):
 def main():
     
     fbpage_names = list(PAGE_SHORT_NAME.keys())
+
+    #Write info about previous scraping
+    st.info("Previous scraping results")
+    st.markdown(
+        '''
+        Page name:  SAF
+        Latest timestamp:  2023-05-29 17:59:14
+        Number of posts:  80
+        ---
+        Page name:  RSF
+        Latest timestamp:  2023-06-10 17:16:44
+        Number of posts:  57
+        '''
+    )
+
     #add dropdown menu to select a page
     fbpage_name = st.selectbox("Select a page", fbpage_names)
     st.info("Page selected: " + fbpage_name + " (" + PAGE_SHORT_NAME[fbpage_name] + ")")
