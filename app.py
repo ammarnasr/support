@@ -74,7 +74,7 @@ def main():
 
     #Write info about previous scraping
     st.info("Previous scraping results")
-    st.markdown(
+    st.info(
         '''
         Page name:  SAF
         Latest timestamp:  2023-05-29 17:59:14
