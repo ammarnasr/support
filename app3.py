@@ -103,211 +103,211 @@ def get_number_of_tweets_in_city(target_city):
         
 
 with tab1:
+    st.info('not working now...')
+    # # Set up the title of the app
+    # st.markdown("<h1 style='text-align: center; color: Blue;'>Sudan Tweets Analysis</h1>", unsafe_allow_html=True)
+
+    # # Set up a content section in the sidebar for the app description
+    # st.sidebar.markdown("<h3 style='text-align: center; color: White;'>Contents</h3>", unsafe_allow_html=True)
+
+    # # Add a tab for the app description
+    # st.sidebar.markdown("<h4 style='text-align: center; color: White;'>App Description</h4>", unsafe_allow_html=True)
+
+
+    # counts = {}
+    # for title in json_files_short_names:
+    #     counts[title] = pd.DataFrame(json_files_dict[title]['data']).shape[0]
+
+
+    # counts_card('All Needs', counts['All'])
+
+    # col1, col2, col3, col4, col5 = st.columns(5)
+    # with col1:
+    #     title = 'Khartoum'
+    #     count_khartoum = get_number_of_tweets_in_city(title)
+    #     counts[title] = count_khartoum
+    #     counts_card(title, count_khartoum)
+
+    # with col2:
+    #     title = 'Omderman'
+    #     count_omderman = get_number_of_tweets_in_city(title)
+    #     counts[title] = count_omderman
+    #     counts_card(title, count_omderman)
+
+    # with col3:
+    #     title = 'Bahri'
+    #     count_bahri = get_number_of_tweets_in_city(title)
+    #     counts[title] = count_bahri
+    #     counts_card(title, count_bahri)
+    # with col4:
+    #     title = 'Shrq'
+    #     count_shrq = get_number_of_tweets_in_city(title)
+    #     counts[title] = count_shrq
+    #     counts_card(title, count_shrq)
+
+    # with col5:
+    #     title = 'Other'
+    #     other_count = counts['All'] - count_khartoum - count_omderman - count_bahri - count_shrq
+    #     counts_card(title, other_count)
+
+
+    # # Create a bar chart showing the Above Information
+    # counts_cities = [counts['Khartoum'], counts['Omderman'], counts['Bahri'], counts['Shrq'], other_count, counts['All']]
+    # cities = ['Khartoum', 'Omderman', 'Bahri', 'Shrq', 'Other', 'All']
+    # fig = px.bar(x=cities, y=counts_cities, color=counts_cities, color_continuous_scale='RdBu')
+    # fig.update_xaxes(title_text='City')
+    # fig.update_yaxes(title_text='Number of Tweets')
+    # fig.update_layout(title_text='Number of Tweets per City', title_x=0.5)
+    # st.plotly_chart(fig, use_container_width=True)
+
+
+
+    # col1, col2, col3, col4, col5, col6 = st.columns(6)
+
+    # with col1:
+    #     title = 'Gas'
+    #     counts_card(title, counts[title])
+
+    # with col2:
+    #     title = 'Med'
+    #     counts_card(title, counts[title])
+
+    # with col3:
+    #     title = 'Car'
+    #     counts_card(title, counts[title])
+
+    # with col4:
+    #     title = 'Water'
+    #     counts_card(title, counts[title])
+
+    # with col5:
+    #     title = 'Elec'
+    #     counts_card(title, counts[title])
     
-    # Set up the title of the app
-    st.markdown("<h1 style='text-align: center; color: Blue;'>Sudan Tweets Analysis</h1>", unsafe_allow_html=True)
-
-    # Set up a content section in the sidebar for the app description
-    st.sidebar.markdown("<h3 style='text-align: center; color: White;'>Contents</h3>", unsafe_allow_html=True)
-
-    # Add a tab for the app description
-    st.sidebar.markdown("<h4 style='text-align: center; color: White;'>App Description</h4>", unsafe_allow_html=True)
+    # with col6:
+    #     title = 'Other'
+    #     other_count = counts['All'] - counts['Gas'] - counts['Med'] - counts['Car'] - counts['Water'] - counts['Elec']
+    #     counts_card(title, other_count)
 
 
-    counts = {}
-    for title in json_files_short_names:
-        counts[title] = pd.DataFrame(json_files_dict[title]['data']).shape[0]
-
-
-    counts_card('All Needs', counts['All'])
-
-    col1, col2, col3, col4, col5 = st.columns(5)
-    with col1:
-        title = 'Khartoum'
-        count_khartoum = get_number_of_tweets_in_city(title)
-        counts[title] = count_khartoum
-        counts_card(title, count_khartoum)
-
-    with col2:
-        title = 'Omderman'
-        count_omderman = get_number_of_tweets_in_city(title)
-        counts[title] = count_omderman
-        counts_card(title, count_omderman)
-
-    with col3:
-        title = 'Bahri'
-        count_bahri = get_number_of_tweets_in_city(title)
-        counts[title] = count_bahri
-        counts_card(title, count_bahri)
-    with col4:
-        title = 'Shrq'
-        count_shrq = get_number_of_tweets_in_city(title)
-        counts[title] = count_shrq
-        counts_card(title, count_shrq)
-
-    with col5:
-        title = 'Other'
-        other_count = counts['All'] - count_khartoum - count_omderman - count_bahri - count_shrq
-        counts_card(title, other_count)
-
-
-    # Create a bar chart showing the Above Information
-    counts_cities = [counts['Khartoum'], counts['Omderman'], counts['Bahri'], counts['Shrq'], other_count, counts['All']]
-    cities = ['Khartoum', 'Omderman', 'Bahri', 'Shrq', 'Other', 'All']
-    fig = px.bar(x=cities, y=counts_cities, color=counts_cities, color_continuous_scale='RdBu')
-    fig.update_xaxes(title_text='City')
-    fig.update_yaxes(title_text='Number of Tweets')
-    fig.update_layout(title_text='Number of Tweets per City', title_x=0.5)
-    st.plotly_chart(fig, use_container_width=True)
+    # # Create a bar chart showing the Above Information
+    # counts_cities = [counts['Gas'], counts['Med'], counts['Car'], counts['Water'], other_count, counts['All']]
+    # cities = ['Gas', 'Med', 'Car', 'Water', 'Other', 'All']
+    # fig = px.bar(x=cities, y=counts_cities, color=counts_cities, color_continuous_scale='RdBu')
+    # fig.update_xaxes(title_text='Need')
+    # fig.update_yaxes(title_text='Number of Tweets')
+    # fig.update_layout(title_text='Number of Tweets per Need', title_x=0.5)
+    # st.plotly_chart(fig, use_container_width=True)
 
 
 
-    col1, col2, col3, col4, col5, col6 = st.columns(6)
+    # st.info('The following charts shows the number of tweets per day for each need Click on the legend to hide/show a need')
 
-    with col1:
-        title = 'Gas'
-        counts_card(title, counts[title])
-
-    with col2:
-        title = 'Med'
-        counts_card(title, counts[title])
-
-    with col3:
-        title = 'Car'
-        counts_card(title, counts[title])
-
-    with col4:
-        title = 'Water'
-        counts_card(title, counts[title])
-
-    with col5:
-        title = 'Elec'
-        counts_card(title, counts[title])
-    
-    with col6:
-        title = 'Other'
-        other_count = counts['All'] - counts['Gas'] - counts['Med'] - counts['Car'] - counts['Water'] - counts['Elec']
-        counts_card(title, other_count)
-
-
-    # Create a bar chart showing the Above Information
-    counts_cities = [counts['Gas'], counts['Med'], counts['Car'], counts['Water'], other_count, counts['All']]
-    cities = ['Gas', 'Med', 'Car', 'Water', 'Other', 'All']
-    fig = px.bar(x=cities, y=counts_cities, color=counts_cities, color_continuous_scale='RdBu')
-    fig.update_xaxes(title_text='Need')
-    fig.update_yaxes(title_text='Number of Tweets')
-    fig.update_layout(title_text='Number of Tweets per Need', title_x=0.5)
-    st.plotly_chart(fig, use_container_width=True)
-
-
-
-    st.info('The following charts shows the number of tweets per day for each need Click on the legend to hide/show a need')
-
-    tweets_per_day = {}
-    for title in json_files_short_names:
-        if title in ['Khartoum', 'Omderman', 'Bahri', 'Shrq']:
-            temp_df = pd.DataFrame(json_files_dict[title]['data'])
-            temp_df['created_at'] = pd.to_datetime(temp_df['created_at'])
-            temp_df['date'] = temp_df['created_at'].dt.date
-            tweets_per_day[title] = temp_df.groupby('date').size().reset_index(name='counts')
-    fig = px.line()
-    for title in tweets_per_day.keys():
-        fig.add_scatter(x=tweets_per_day[title]['date'], y=tweets_per_day[title]['counts'], name=title)
-    fig.update_xaxes(title_text='Date')
-    fig.update_yaxes(title_text='Number of Tweets')
-    fig.update_layout(title_text='Number of Tweets per Day Cities', title_x=0.5)
-    st.plotly_chart(fig, use_container_width=True)
+    # tweets_per_day = {}
+    # for title in json_files_short_names:
+    #     if title in ['Khartoum', 'Omderman', 'Bahri', 'Shrq']:
+    #         temp_df = pd.DataFrame(json_files_dict[title]['data'])
+    #         temp_df['created_at'] = pd.to_datetime(temp_df['created_at'])
+    #         temp_df['date'] = temp_df['created_at'].dt.date
+    #         tweets_per_day[title] = temp_df.groupby('date').size().reset_index(name='counts')
+    # fig = px.line()
+    # for title in tweets_per_day.keys():
+    #     fig.add_scatter(x=tweets_per_day[title]['date'], y=tweets_per_day[title]['counts'], name=title)
+    # fig.update_xaxes(title_text='Date')
+    # fig.update_yaxes(title_text='Number of Tweets')
+    # fig.update_layout(title_text='Number of Tweets per Day Cities', title_x=0.5)
+    # st.plotly_chart(fig, use_container_width=True)
 
    
-    tweets_per_day = {}
-    for title in json_files_short_names:
-        if title in ['Gas', 'Med', 'Car', 'Water', 'Elec']:
-            temp_df = pd.DataFrame(json_files_dict[title]['data'])
-            temp_df['created_at'] = pd.to_datetime(temp_df['created_at'])
-            temp_df['date'] = temp_df['created_at'].dt.date
-            tweets_per_day[title] = temp_df.groupby('date').size().reset_index(name='counts')
-    fig = px.line()
-    for title in  tweets_per_day.keys():
-        fig.add_scatter(x=tweets_per_day[title]['date'], y=tweets_per_day[title]['counts'], name=title)
-    fig.update_xaxes(title_text='Date')
-    fig.update_yaxes(title_text='Number of Tweets')
-    fig.update_layout(title_text='Number of Tweets per Day Needs Type', title_x=0.5)
-    st.plotly_chart(fig, use_container_width=True)
+    # tweets_per_day = {}
+    # for title in json_files_short_names:
+    #     if title in ['Gas', 'Med', 'Car', 'Water', 'Elec']:
+    #         temp_df = pd.DataFrame(json_files_dict[title]['data'])
+    #         temp_df['created_at'] = pd.to_datetime(temp_df['created_at'])
+    #         temp_df['date'] = temp_df['created_at'].dt.date
+    #         tweets_per_day[title] = temp_df.groupby('date').size().reset_index(name='counts')
+    # fig = px.line()
+    # for title in  tweets_per_day.keys():
+    #     fig.add_scatter(x=tweets_per_day[title]['date'], y=tweets_per_day[title]['counts'], name=title)
+    # fig.update_xaxes(title_text='Date')
+    # fig.update_yaxes(title_text='Number of Tweets')
+    # fig.update_layout(title_text='Number of Tweets per Day Needs Type', title_x=0.5)
+    # st.plotly_chart(fig, use_container_width=True)
 
 
 
 
-    tweets_per_hour = {}
-    for title in json_files_short_names:
-        if title in ['Khartoum', 'Omderman', 'Bahri', 'Shrq']:
-            temp_df = pd.DataFrame(json_files_dict[title]['data'])
-            temp_df['created_at'] = pd.to_datetime(temp_df['created_at'])
-            temp_df['hour'] = temp_df['created_at'].dt.hour
-            tweets_per_hour[title] = temp_df.groupby('hour').size().reset_index(name='counts')
-    fig = px.line()
-    for title in tweets_per_hour.keys():
-        fig.add_scatter(x=tweets_per_hour[title]['hour'], y=tweets_per_hour[title]['counts'], name=title)
-    fig.update_xaxes(title_text='Hour')
-    fig.update_yaxes(title_text='Number of Tweets')
-    fig.update_layout(title_text='Number of Tweets per Hour Cities', title_x=0.5)
-    st.plotly_chart(fig, use_container_width=True)
+    # tweets_per_hour = {}
+    # for title in json_files_short_names:
+    #     if title in ['Khartoum', 'Omderman', 'Bahri', 'Shrq']:
+    #         temp_df = pd.DataFrame(json_files_dict[title]['data'])
+    #         temp_df['created_at'] = pd.to_datetime(temp_df['created_at'])
+    #         temp_df['hour'] = temp_df['created_at'].dt.hour
+    #         tweets_per_hour[title] = temp_df.groupby('hour').size().reset_index(name='counts')
+    # fig = px.line()
+    # for title in tweets_per_hour.keys():
+    #     fig.add_scatter(x=tweets_per_hour[title]['hour'], y=tweets_per_hour[title]['counts'], name=title)
+    # fig.update_xaxes(title_text='Hour')
+    # fig.update_yaxes(title_text='Number of Tweets')
+    # fig.update_layout(title_text='Number of Tweets per Hour Cities', title_x=0.5)
+    # st.plotly_chart(fig, use_container_width=True)
 
    
-    tweets_per_hour = {}
-    for title in json_files_short_names:
-        if title in ['Gas', 'Med', 'Car', 'Water', 'Elec']:
-            temp_df = pd.DataFrame(json_files_dict[title]['data'])
-            temp_df['created_at'] = pd.to_datetime(temp_df['created_at'])
-            temp_df['hour'] = temp_df['created_at'].dt.hour
-            tweets_per_hour[title] = temp_df.groupby('hour').size().reset_index(name='counts')
-    fig = px.line()
-    for title in tweets_per_hour.keys():
-        fig.add_scatter(x=tweets_per_hour[title]['hour'], y=tweets_per_hour[title]['counts'], name=title)
-    fig.update_xaxes(title_text='Hour')
-    fig.update_yaxes(title_text='Number of Tweets')
-    fig.update_layout(title_text='Number of Tweets per Hour Needs Types', title_x=0.5)
-    st.plotly_chart(fig, use_container_width=True)
+    # tweets_per_hour = {}
+    # for title in json_files_short_names:
+    #     if title in ['Gas', 'Med', 'Car', 'Water', 'Elec']:
+    #         temp_df = pd.DataFrame(json_files_dict[title]['data'])
+    #         temp_df['created_at'] = pd.to_datetime(temp_df['created_at'])
+    #         temp_df['hour'] = temp_df['created_at'].dt.hour
+    #         tweets_per_hour[title] = temp_df.groupby('hour').size().reset_index(name='counts')
+    # fig = px.line()
+    # for title in tweets_per_hour.keys():
+    #     fig.add_scatter(x=tweets_per_hour[title]['hour'], y=tweets_per_hour[title]['counts'], name=title)
+    # fig.update_xaxes(title_text='Hour')
+    # fig.update_yaxes(title_text='Number of Tweets')
+    # fig.update_layout(title_text='Number of Tweets per Hour Needs Types', title_x=0.5)
+    # st.plotly_chart(fig, use_container_width=True)
 
    
 
 
-    # Display a dropdown menu for the user to select a file
-    selected_file = st.selectbox("Select a JSON file:", json_files_short_names)
-    df = pd.DataFrame(json_files_dict[selected_file]['data'])
-    df['created_at'] = pd.to_datetime(df['created_at'])
-    # Add a new column for the date of the day
-    df['date'] = df['created_at'].dt.date
-    # Add a new column for the hour of the day
-    df['hour'] = df['created_at'].dt.hour
+    # # Display a dropdown menu for the user to select a file
+    # selected_file = st.selectbox("Select a JSON file:", json_files_short_names)
+    # df = pd.DataFrame(json_files_dict[selected_file]['data'])
+    # df['created_at'] = pd.to_datetime(df['created_at'])
+    # # Add a new column for the date of the day
+    # df['date'] = df['created_at'].dt.date
+    # # Add a new column for the hour of the day
+    # df['hour'] = df['created_at'].dt.hour
 
-    col1, col2 = st.columns([6, 1])
+    # col1, col2 = st.columns([6, 1])
 
-    with col1:
-        # Display the dataframe when the user presses the button
-        if st.button("Show Dataframe"):
+    # with col1:
+    #     # Display the dataframe when the user presses the button
+    #     if st.button("Show Dataframe"):
             
-            st.table(df)
+    #         st.table(df)
 
 
 
 
-    with col2:
-        file_name = json_files[json_files_short_names.index(selected_file)]
-        #Download the json file
-        st.download_button(
-            label="Download JSON",
-            data=json.dumps(json_data, ensure_ascii = False),
-            file_name=file_name,
-            mime='application/json'
-        )
+    # with col2:
+    #     file_name = json_files[json_files_short_names.index(selected_file)]
+    #     #Download the json file
+    #     st.download_button(
+    #         label="Download JSON",
+    #         data=json.dumps(json_data, ensure_ascii = False),
+    #         file_name=file_name,
+    #         mime='application/json'
+    #     )
 
-        #Download the csv file
-        #remove the .json from the file name
-        file_name = file_name[:-5]
-        st.download_button(
-            label="Download CSV",
-            data=df.to_csv(index=False, encoding='utf-8'),
-            file_name=file_name + '.csv',
-            mime='text/csv'
-        )
+    #     #Download the csv file
+    #     #remove the .json from the file name
+    #     file_name = file_name[:-5]
+    #     st.download_button(
+    #         label="Download CSV",
+    #         data=df.to_csv(index=False, encoding='utf-8'),
+    #         file_name=file_name + '.csv',
+    #         mime='text/csv'
+    #     )
 
