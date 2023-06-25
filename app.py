@@ -203,22 +203,20 @@ def main():
                         st.info("Scraping took longer than expected, please wait for the scraping to finish")
 
                     #add post to data dictionary 
-                    with st.empty():
-                        st.write(f"Scraping post {i}, with time: {post['time']}")
-                        for key, value in post.items():
-                            if key not in data:
-                                data[key] = [value]
-                            else:
-                                data[key].append(value)
+                    st.write(f"Scraping post {i}, with time: {post['time']}")
+                    for key, value in post.items():
+                        if key not in data:
+                            data[key] = [value]
+                        else:
+                            data[key].append(value)
 
                     #sleep for a random number of seconds between 1 and 5
                     rand_sleep = randint(1, 5)
                     sleep(rand_sleep)
 
                     # save data to pickle file
-                    with st.empty():
-                        with open(posts_filename, "wb") as f:
-                            pickle.dump(data, f)
+                    with open(posts_filename, "wb") as f:
+                        pickle.dump(data, f)
 
             except Exception as e:
                 sleep_duration = 1000
