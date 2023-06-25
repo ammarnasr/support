@@ -7,4 +7,5 @@ wordcloud
 arabic-reshaper
 python-bidi
 nltk
+facebook_scraper
 
