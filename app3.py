@@ -104,6 +104,7 @@ def get_number_of_tweets_in_city(target_city):
 
 with tab1:
     st.info('not working now...')
+    st.info('Go to the Facebook New Posts tab')
     # # Set up the title of the app
     # st.markdown("<h1 style='text-align: center; color: Blue;'>Sudan Tweets Analysis</h1>", unsafe_allow_html=True)
 
