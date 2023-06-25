@@ -17,7 +17,7 @@ with tab3:
     main()
 
 with tab2:
-    # Set up the Streamlit app page layout to have a centered 80% width
+    # Set up the Streamlit app page layout to have a centered 80% width .
     st.title('Facebook Posts Analysis')
     st.plotly_chart(num_of_tweets(),use_container_width=True)
     st.plotly_chart(daily_count(),use_container_width=True)
