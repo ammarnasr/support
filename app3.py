@@ -11,7 +11,7 @@ from app import main
 # Set up the Streamlit app page layout to have a centered 80% width 
 st.set_page_config(layout="wide", page_title='Sudan Tweets Analysis', page_icon='🇸🇩', initial_sidebar_state='collapsed')
 
-tab1, tab2, tab3 = st.tabs(["Twitter", "Facebook", "Facebook New Posts"])
+tab3, tab2, tab1 = st.tabs(["Twitter", "Facebook", "Facebook New Posts"])
 
 with tab3:
     main()
