@@ -192,7 +192,9 @@ def main():
 
             #try looping over all posts, if catch an error, sleep for 1000 seconds and try again and warn the user about the error caused by facebook ban for scraping
             try:
+                st.info("Scraping started")
                 for i, post in enumerate(all_posts):
+                    st.write(i)
                     #update progress bar
                     if i < estimated_number_of_posts:
                         progress_bar.progress(i/estimated_number_of_posts)
