@@ -130,6 +130,10 @@ def main():
             #extra_info: bool, if true the function will try to do an extra request to get the post reactions. Default is False.
             extra_info = st.checkbox("Extra info, if true the function will try to do an extra request to get the post reactions. Default is True.", value=True)
 
+            #save locallly: bool, if true the function will save the posts to a local json file. Default is False.
+            save_locally = st.checkbox("Save locally, if true the function will save the posts to a local json file. Default is False.", value=False)
+
+
             #posts_per_page: set to 200 to request 200 posts per page. The default is 4.
             # posts_per_page = st.number_input("Posts per page, set to 200 to request 200 posts per page. The default is 4.", min_value=1, max_value=200, value=4)
 
@@ -217,8 +221,9 @@ def main():
                     sleep(rand_sleep)
 
                     # save data to pickle file
-                    with open(posts_filename, "wb") as f:
-                        pickle.dump(data, f)
+                    if save_locally:
+                        with open(posts_filename, "wb") as f:
+                            pickle.dump(data, f)
 
             except Exception as e:
                 sleep_duration = 1000
