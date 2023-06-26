@@ -93,11 +93,44 @@ def main():
     st.info("Page selected: " + fbpage_name + " (" + PAGE_SHORT_NAME[fbpage_name] + ")")
 
     latest_df = get_posts_df(results_dir="results", fbpage_name=fbpage_name)
+
+    col1, col2 = st.columns(2)
+    with col1:
+         # add button to download the data withouth the comments column
+            if st.button("Download data without comments column"):
+                latest_df_without_comments = latest_df.copy()
+                latest_df_without_comments.drop(columns=["comments_full"], inplace=True)
+                st.download_button(
+                        "Press to Download",
+                        latest_df_without_comments.to_csv(index=False).encode('utf-8-sig'),
+                        "file.csv",
+                        "text/csv",
+                        key='download-csv'
+                        )
+    with col2:
+        # add button to download the comments column
+        if st.button("Download comments column"):
+            comments = latest_df["comments_full"].tolist()
+            #convert comment_time to string
+            for i, post in enumerate(comments):
+                for j, comment in enumerate(post):
+                    comment["comment_time"] = comment["comment_time"].strftime("%Y-%m-%d %H:%M:%S")
+                    post[j] = comment
+                comments[i] = post
+            comments_dict = {'comments': comments}
+            json_string = json.dumps(comments_dict, indent=4)
+            st.download_button(
+                label="Download JSON",
+                file_name="comments.json",
+                mime="application/json",
+                data=json_string,)
     if latest_df is not None:
         st.write(latest_df.head())
         #button to view the latest data
         if st.button("View latest data"):
             st.write(latest_df)
+           
+
         #button to show the comments column
         if st.button("Show comments column"):
             comments = latest_df["comments_full"].tolist()
